@@ -41,9 +41,21 @@ public class AnswersStudent implements Serializable{
     @OneToOne(mappedBy="answer_id")
     private Answer answer;
     
-    @OneToOne(mappedBy="text")
-    private String text;
+     public AnswersStudent() {}
     
+    public AnswersStudent(BigInteger id, Student student, Test test, Answer answer) {
+        this.id = id;
+        this.test = test;
+        this.student=student;
+        this.answer=answer;
+    }  
+    
+    public AnswersStudent(Student student, Test test, Answer answer) {
+        this.test = test;
+        this.student=student;
+        this.answer=answer;
+    }  
+   
      
     
     

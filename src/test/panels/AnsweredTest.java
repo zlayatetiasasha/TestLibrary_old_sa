@@ -47,6 +47,51 @@ public class AnsweredTest implements Serializable{
     private Student student;
     
     
+    public AnsweredTest() {}
     
+    public AnsweredTest(BigInteger id, Test test, BigInteger result, Student student) {
+        this.id = id;
+        this.test = test;
+        this.result = result;
+        this.student=student;
+    }  
+    
+    public AnsweredTest(Test test, BigInteger result, Student student) {
+        this.test = test;
+        this.result = result;
+        this.student=student;
+    }  
+    
+    public void setId(BigInteger id) {
+        this.id = id;
+    }
+
+    public BigInteger getId() {
+        return id;
+    }
+    
+    public void setTest(Test test) {
+        this.test = test;
+    }
+
+    public Test getTest() {
+        return test;
+    }
+    
+     public void setResult(BigInteger result) {
+        this.result = result;
+    }
+
+    public BigInteger getResult() {
+        return result;
+    }
+    
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
     
 }
