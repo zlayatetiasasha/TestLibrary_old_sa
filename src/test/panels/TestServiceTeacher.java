@@ -5,10 +5,13 @@
  */
 package test.panels;
 
+import java.math.BigInteger;
+
 /**
  *
  * @author Asus
  */
 public interface TestServiceTeacher {
-     Test[] getTeacherTests(Long id);
+     Test[] getTeacherTests(BigInteger id);
+     public Teacher getTeacherByLogin(String login);
 }

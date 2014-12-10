@@ -2,19 +2,29 @@ package test.panels;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
-@Table(name="Student")
+@Table(name="student")
 public class Student implements Serializable {
 
     @Id
@@ -38,8 +48,19 @@ public class Student implements Serializable {
     @Column(name="faculty")
     private String faculty;
     
-    @OneToOne(mappedBy="log")
-    private LogStudent log;
+    /*@OneToOne(mappedBy="id")
+    private LogStudent log;*/
+    
+    @OneToMany( mappedBy = "id")
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<AnswersStudent> answersStudent = new ArrayList<AnswersStudent>();
+    
+    @OneToMany(mappedBy = "id")
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<AnsweredTest> answeredTests = new ArrayList<AnsweredTest>();
+   
     
     public Student() {}
     
@@ -51,6 +72,11 @@ public class Student implements Serializable {
         this.grnum = grnum;
         this.faculty = faculty;
     }
+    
+    
+    public Student(BigInteger id) {
+        this.id = id;
+    } 
     
     public void setId(BigInteger id) {
         this.id = id;
@@ -100,11 +126,19 @@ public class Student implements Serializable {
         return faculty;
     }
     
-    public void setLogStudent(LogStudent faculty) {
+  /*  public void setLogStudent(LogStudent faculty) {
         this.log = log;
     }
 
     public LogStudent getLogStudent() {
         return log;
+    }*/
+    
+     public void setAnswersStudent(List<AnswersStudent> answersStudent) {
+        this.answersStudent = answersStudent;
+    }
+    
+    public List<AnswersStudent> getAnswersStudent() {
+        return answersStudent;
     }
 }

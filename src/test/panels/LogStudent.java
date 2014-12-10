@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Asus
  */
 @Entity
-@Table(name="LogStudent")
+@Table(name="logstudent")
 public class LogStudent {
     
     @Id

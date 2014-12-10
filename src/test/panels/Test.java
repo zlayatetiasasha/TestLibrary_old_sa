@@ -14,16 +14,19 @@ import java.util.List;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
-@Table(name="Test")
+@Table(name="test")
 public class Test implements Serializable {
 
     @Id
@@ -32,8 +35,9 @@ public class Test implements Serializable {
     @Column(name="id")
     private BigInteger id;    
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "test")
+    @OneToMany( mappedBy = "id")
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Question> questions = new ArrayList<Question>();
     
     @Column(name = "title")
@@ -58,6 +62,16 @@ public class Test implements Serializable {
     @JoinColumn(name="teacher_id", nullable = false, insertable = true, updatable = true)
     private Teacher teacher;
     
+    @OneToMany( mappedBy = "id")
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<AnswersStudent> answersStudent = new ArrayList<AnswersStudent>();
+    
+    @OneToMany( mappedBy = "id")
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<AnsweredTest> answeredTests = new ArrayList<AnsweredTest>();
+     
    /* @OneToOne(mappedBy="test")
     private Statistics stat;*/
         
@@ -84,6 +98,10 @@ public class Test implements Serializable {
         this.date = date;
         this.teacher = teacher;
     }
+    
+    public Test(BigInteger id) {
+        this.id = id;
+    } 
 
     public void setId(BigInteger id) {
         this.id = id;
@@ -176,5 +194,13 @@ public class Test implements Serializable {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+    
+     public void setAnswersStudent(List<AnswersStudent> answersStudent) {
+        this.answersStudent = answersStudent;
+    }
+    
+    public List<AnswersStudent> getAnswersStudent() {
+        return answersStudent;
     }
 }

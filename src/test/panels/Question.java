@@ -18,16 +18,19 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
-@Table(name = "Question")
+@Table(name = "question")
 public class Question implements Serializable {
 
     @Id
@@ -43,27 +46,43 @@ public class Question implements Serializable {
     @JoinColumn(name="test_id", nullable = false, insertable = true, updatable = true)
     private Test test;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "question")
+    @OneToMany( mappedBy = "question")
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Answer> answers = new ArrayList<Answer>();
     
     @OneToOne(mappedBy="question")
     private QuestionType qtype;
+    
+    @OneToMany(mappedBy = "id")
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<AnswersStudent> answersStudent = new ArrayList<AnswersStudent>();
+    
+  
+    
+  /*  @ManyToOne
+    @JoinColumn(name="id", nullable = false, insertable = true, updatable = true)
+    private AnswersStudent answersStudent;*/
         
     public Question() {
         text = "";
     }
     
-    public Question(BigInteger id, String text, QuestionType qtype) {
+    public Question(BigInteger id, String text) {
         this.id = id;
         this.text = text;
         this.qtype=qtype;
     }
     
-    public Question(String text, QuestionType qtype) {
+    public Question(String text) {
         this.text = text;
         this.qtype=qtype;
     }
+    
+    public Question(BigInteger id) {
+        this.id = id;
+    } 
     
     
     public void setId(BigInteger id) {
@@ -116,5 +135,13 @@ public class Question implements Serializable {
     
     public QuestionType getQuestionType() {
         return qtype;
+    }
+    
+     public void setAnswersStudent(List<AnswersStudent> answersStudent) {
+        this.answersStudent = answersStudent;
+    }
+    
+    public List<AnswersStudent> getAnswersStudent() {
+        return answersStudent;
     }
 }

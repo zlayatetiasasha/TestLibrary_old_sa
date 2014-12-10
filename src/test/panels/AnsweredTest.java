@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
@@ -37,14 +38,20 @@ public class AnsweredTest implements Serializable{
     private BigInteger id;
       
     
-    @OneToOne(mappedBy="test_id")
+    @ManyToOne
+    @JoinColumn(name="test_id", nullable = false, insertable = true, updatable = true)
+     @OrderColumn(name = "test_id")
     private Test test;
     
     @Column(name = "result")
     private BigInteger result;
     
-    @OneToOne(mappedBy="student_id")
+    @ManyToOne
+    @JoinColumn(name="student_id", nullable = false, insertable = true, updatable = true)
+     @OrderColumn(name = "student_id")
     private Student student;
+    
+   
     
     
     public AnsweredTest() {}
@@ -61,6 +68,10 @@ public class AnsweredTest implements Serializable{
         this.result = result;
         this.student=student;
     }  
+    
+    public AnsweredTest(BigInteger id) {
+        this.id = id;
+    } 
     
     public void setId(BigInteger id) {
         this.id = id;

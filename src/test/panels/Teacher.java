@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  * Created by Asus on 16.11.2014.
  */
 @Entity
-@Table(name="Teacher")
+@Table(name="teacher")
 public class Teacher implements Serializable {
 
     @Id
@@ -54,6 +54,11 @@ public class Teacher implements Serializable {
         this.name = name;
         this.email = email;
     }
+    
+  
+    public Teacher(BigInteger id) {
+        this.id = id;
+    } 
     
     
     public void setId(BigInteger id) {
