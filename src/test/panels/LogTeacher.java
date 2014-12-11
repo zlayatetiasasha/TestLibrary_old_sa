@@ -48,6 +48,11 @@ public class LogTeacher {
         this.password = password;
     }
     
+    public LogTeacher(String login, String password) { 
+        this.login = login;
+        this.password = password;
+    }
+    
     public void setId(BigInteger id) {
         this.id = id;
     }

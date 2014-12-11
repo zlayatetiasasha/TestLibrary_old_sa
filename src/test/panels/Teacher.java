@@ -42,6 +42,7 @@ public class Teacher implements Serializable {
         this.id = id;
     }
     
+      
     public void setId(BigInteger id) {
         this.id = id;
     }
@@ -50,7 +51,7 @@ public class Teacher implements Serializable {
         return id;
     }
     
-  /*  public void setLogTeacher(LogTeacher faculty) {
+    /*public void setLogTeacher(LogTeacher faculty) {
         this.log = log;
     }
 
