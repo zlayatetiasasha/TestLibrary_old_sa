@@ -99,7 +99,7 @@ public class Test implements Serializable {
     public Test() {}
     
     public Test(BigInteger id, List<Question> questions, String title, String author, String theme, Integer passScore, String date,
-                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
+                    String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.id = id;
         this.questions = questions;
         this.title = title;
@@ -117,7 +117,7 @@ public class Test implements Serializable {
     }
     
     public Test(List<Question> questions, String title, String author, String theme,  Integer passScore, String date,
-                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
+                    String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.questions = questions;
         this.title = title;
         this.theme = theme;
