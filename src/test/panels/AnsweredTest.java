@@ -48,7 +48,7 @@ public class AnsweredTest implements Serializable{
     
     @ManyToOne
     @JoinColumn(name="student_id", nullable = false, insertable = true, updatable = true)
-     @OrderColumn(name = "student_id")
+    @OrderColumn(name = "student_id")
     private Student student;
     
    

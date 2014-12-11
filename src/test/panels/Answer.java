@@ -20,11 +20,13 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Proxy;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
+@Proxy(lazy=false)
 @Table(name="answer")
 public class Answer implements Serializable {
     

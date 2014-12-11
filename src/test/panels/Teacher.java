@@ -15,11 +15,13 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.Cascade;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Proxy;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
+@Proxy(lazy=false)
 @Table(name="teacher")
 public class Teacher implements Serializable {
 
@@ -50,6 +52,16 @@ public class Teacher implements Serializable {
     public BigInteger getId() {
         return id;
     }
+    
+     public void setTests(List<Test> tests) {
+        this.tests = tests;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+    
+    
     
     /*public void setLogTeacher(LogTeacher faculty) {
         this.log = log;

@@ -15,12 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
  * @author Asus
  */
 @Entity
+@Proxy(lazy=false)
 @Table(name = "questiontype")
 public class QuestionType implements Serializable {
     

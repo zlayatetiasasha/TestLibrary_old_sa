@@ -14,4 +14,6 @@ import java.math.BigInteger;
 public interface TestServiceTeacher {
      Test[] getTeacherTests(BigInteger id);
      public Teacher getTeacherByLogin(String login);
+     
+     public Teacher getTeacherById(BigInteger id);
 }

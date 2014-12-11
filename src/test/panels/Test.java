@@ -21,11 +21,13 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Proxy;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
+@Proxy(lazy=false)
 @Table(name="test")
 public class Test implements Serializable {
 
@@ -99,7 +101,7 @@ public class Test implements Serializable {
     public Test() {}
     
     public Test(BigInteger id, List<Question> questions, String title, String author, String theme, Integer passScore, String date,
-                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
+                    String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.id = id;
         this.questions = questions;
         this.title = title;
@@ -117,7 +119,7 @@ public class Test implements Serializable {
     }
     
     public Test(List<Question> questions, String title, String author, String theme,  Integer passScore, String date,
-                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
+                    String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.questions = questions;
         this.title = title;
         this.theme = theme;

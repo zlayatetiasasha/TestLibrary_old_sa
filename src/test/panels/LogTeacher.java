@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -21,6 +22,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
+@Proxy(lazy=false)
 @Table(name="logteacher")
 public class LogTeacher {
     

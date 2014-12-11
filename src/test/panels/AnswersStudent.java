@@ -24,6 +24,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -31,6 +32,7 @@ import org.hibernate.annotations.IndexColumn;
  */
 
 @Entity
+@Proxy(lazy=false)
 @Table(name = "answersstudent")
 public class AnswersStudent implements Serializable{
     @Id
