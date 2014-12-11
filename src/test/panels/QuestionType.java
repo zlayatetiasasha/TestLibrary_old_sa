@@ -5,6 +5,7 @@
  */
 package test.panels;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "questiontype")
-public class QuestionType {
+public class QuestionType implements Serializable {
     
     @Id
     @GeneratedValue(generator="increment")
