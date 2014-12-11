@@ -22,7 +22,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
-@Table(name="Statistics")
+@Table(name="statistics")
 public class Statistics implements Serializable {
     
     @Id

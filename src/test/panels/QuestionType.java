@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Asus
  */
 @Entity
-@Table(name = "QuestionType")
+@Table(name = "questiontype")
 public class QuestionType {
     
     @Id
@@ -44,6 +44,7 @@ public class QuestionType {
         this.id = id;
         this.name = name;
     }
+    
     
     public void setId(BigInteger id) {
         this.id = id;

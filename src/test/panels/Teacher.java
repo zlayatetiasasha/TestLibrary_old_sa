@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  * Created by Asus on 16.11.2014.
  */
 @Entity
-@Table(name="Teacher")
+@Table(name="teacher")
 public class Teacher implements Serializable {
 
     @Id
@@ -39,8 +39,8 @@ public class Teacher implements Serializable {
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<Test> tests = new ArrayList<Test>();
     
-    @OneToOne(mappedBy="log")
-    private LogTeacher log;
+   // @OneToOne(mappedBy="log")
+   // private LogTeacher log;
 
     public Teacher() { }
     
@@ -49,6 +49,17 @@ public class Teacher implements Serializable {
         this.name = name;
         this.email = email;
     }
+    
+    public Teacher(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+    
+  
+    public Teacher(BigInteger id) {
+        this.id = id;
+    } 
+    
     
     public void setId(BigInteger id) {
         this.id = id;
@@ -74,11 +85,11 @@ public class Teacher implements Serializable {
         return email;
     }
     
-    public void setLogTeacher(LogTeacher faculty) {
+  /*  public void setLogTeacher(LogTeacher faculty) {
         this.log = log;
     }
 
     public LogTeacher getLogTeacher() {
         return log;
-    }
+    }*/
 }

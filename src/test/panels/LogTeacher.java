@@ -21,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
-@Table(name="LogTeacher")
+@Table(name="logteacher")
 public class LogTeacher {
     
     @Id
