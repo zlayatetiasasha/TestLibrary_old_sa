@@ -54,8 +54,6 @@ public class Answer implements Serializable {
     private AnswersStudent answersStudent;
     */
     
-    
-    
     public Answer() {}
     
     public Answer(BigInteger id, Integer isRight, String text) {

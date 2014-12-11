@@ -29,6 +29,7 @@ public class QuestionType {
     @Column(name="id")
     private BigInteger id;
     
+    /*variants - single, multiple, open*/
     @Column(name = "name")
     private String name;
     
@@ -44,7 +45,6 @@ public class QuestionType {
         this.id = id;
         this.name = name;
     }
-    
     
     public void setId(BigInteger id) {
         this.id = id;

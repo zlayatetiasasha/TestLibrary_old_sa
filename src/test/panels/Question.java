@@ -42,6 +42,9 @@ public class Question implements Serializable {
     @Column(name = "text")
     private String text;
     
+    @Column(name = "value")
+    private Integer value;
+    
     @ManyToOne
     @JoinColumn(name="test_id", nullable = false, insertable = true, updatable = true)
     private Test test;
@@ -68,15 +71,17 @@ public class Question implements Serializable {
         text = "";
     }
     
-    public Question(BigInteger id, String text) {
+    public Question(BigInteger id, String text, Integer value) {
         this.id = id;
         this.text = text;
-        this.qtype=qtype;
+        this.qtype = qtype;
+        this.value = value;
     }
     
-    public Question(String text) {
+    public Question(String text, Integer valu) {
         this.text = text;
-        this.qtype=qtype;
+        this.value = value;
+        this.qtype = qtype;
     }
     
     public Question(BigInteger id) {
@@ -98,6 +103,14 @@ public class Question implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+    
+    public Integer getValue() {
+        return value;
+    }
+    
+    public void setValue(Integer value) {
+        this.value = value;
     }
     
     public List<Answer> getAnswers() {
