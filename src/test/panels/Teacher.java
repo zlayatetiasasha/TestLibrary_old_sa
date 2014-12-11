@@ -29,12 +29,6 @@ public class Teacher implements Serializable {
     @Column(name="id")
     private BigInteger id;
     
-    @Column(name="name")
-    private String name;
-    
-    @Column(name="email")
-    private String email;
-    
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher")
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<Test> tests = new ArrayList<Test>();
@@ -44,22 +38,9 @@ public class Teacher implements Serializable {
 
     public Teacher() { }
     
-    public Teacher(BigInteger id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-    
-    public Teacher(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-    
-  
     public Teacher(BigInteger id) {
         this.id = id;
-    } 
-    
+    }
     
     public void setId(BigInteger id) {
         this.id = id;
@@ -67,22 +48,6 @@ public class Teacher implements Serializable {
 
     public BigInteger getId() {
         return id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    public String getEmail() {
-        return email;
     }
     
   /*  public void setLogTeacher(LogTeacher faculty) {

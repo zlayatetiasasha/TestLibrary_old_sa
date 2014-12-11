@@ -59,7 +59,6 @@ public class Question implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<AnswersStudent> answersStudent = new ArrayList<AnswersStudent>();
     
-  
     
   /*  @ManyToOne
     @JoinColumn(name="id", nullable = false, insertable = true, updatable = true)
