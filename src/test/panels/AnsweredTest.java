@@ -29,7 +29,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
-@Table(name = "AnsweredTest")
+@Table(name = "answeredtest")
 public class AnsweredTest implements Serializable{
     @Id
     @GeneratedValue(generator="increment")

@@ -73,6 +73,14 @@ public class Student implements Serializable {
         this.faculty = faculty;
     }
     
+    public Student(String name, String email, Integer course, String grnum, String faculty) {
+        this.name = name;
+        this.email = email;
+        this.course = course;
+        this.grnum = grnum;
+        this.faculty = faculty;
+    }
+    
     
     public Student(BigInteger id) {
         this.id = id;

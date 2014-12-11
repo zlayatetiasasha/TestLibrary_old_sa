@@ -78,7 +78,7 @@ public class Question implements Serializable {
         this.value = value;
     }
     
-    public Question(String text, Integer valu) {
+    public Question(String text, Integer value) {
         this.text = text;
         this.value = value;
         this.qtype = qtype;
