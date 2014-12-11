@@ -59,7 +59,7 @@ public class Test implements Serializable {
     private String instructions;
     
     @Column(name = "access")
-    private String access;
+    private Integer access;
     
     @Column(name = "time")
     private Integer timeToPass;
@@ -99,7 +99,7 @@ public class Test implements Serializable {
     public Test() {}
     
     public Test(BigInteger id, List<Question> questions, String title, String author, String theme, Integer passScore, String date,
-                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, String access) {
+                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.id = id;
         this.questions = questions;
         this.title = title;
@@ -117,7 +117,7 @@ public class Test implements Serializable {
     }
     
     public Test(List<Question> questions, String title, String author, String theme,  Integer passScore, String date,
-                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, String access) {
+                    String instruction, Integer TimeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.questions = questions;
         this.title = title;
         this.theme = theme;
@@ -261,11 +261,11 @@ public class Test implements Serializable {
         this.exc = exc;
     }
     
-    public String getAccess() {
+    public Integer getAccess() {
         return access;
     }
 
-    public void setAccess(String access) {
+    public void setAccess(Integer access) {
         this.access = access;
     }
     
