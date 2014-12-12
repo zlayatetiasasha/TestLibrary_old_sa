@@ -18,10 +18,18 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PostLoad;
+import javax.persistence.Query;
+
+import org.hibernate.Hibernate;
+
 import org.hibernate.annotations.Cascade;
+
+
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Proxy;
+import org.hibernate.FetchMode;
 
 /**
  * Created by Asus on 16.11.2014.
@@ -37,10 +45,12 @@ public class Test implements Serializable {
     @Column(name="id")
     private BigInteger id;    
     
-    @OneToMany( mappedBy = "id")
+    
+    @OneToMany(fetch=FetchType.EAGER,mappedBy = "id")
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Question> questions = new ArrayList<Question>();
+    
     
     @Column(name = "title")
     private String title;
@@ -82,6 +92,7 @@ public class Test implements Serializable {
     private Integer exc;
     
     @ManyToOne
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name="teacher_id", nullable = false, insertable = true, updatable = true)
     private Teacher teacher;
     
@@ -133,6 +144,25 @@ public class Test implements Serializable {
         this.good = good;
         this.exc = exc;
         this.access = access;
+    }
+    
+    public Test(List<Question> questions, String title, String author, String theme,  Integer passScore, String date,
+                    String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access,
+                    Teacher teacher) {
+        this.questions = questions;
+        this.title = title;
+        this.theme = theme;
+        this.passScore = passScore;
+        this.date = date;
+        this.instructions = instructions;
+        this.timeToPass = timeToPass;
+        this.poor = poor;
+        this.unsat = unsat;
+        this.sat = sat;
+        this.good = good;
+        this.exc = exc;
+        this.access = access;
+        this.teacher=teacher;
     }
     
     public Test(BigInteger id) {

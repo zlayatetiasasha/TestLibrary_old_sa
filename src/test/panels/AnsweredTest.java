@@ -22,6 +22,7 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -29,6 +30,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
+@Proxy(lazy=false)
 @Table(name = "answeredtest")
 public class AnsweredTest implements Serializable{
     @Id

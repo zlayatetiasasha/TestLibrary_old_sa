@@ -12,17 +12,22 @@ import java.util.List;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PostLoad;
+import javax.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.Cascade;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Proxy;
 
 /**
  * Created by Asus on 16.11.2014.
  */
 @Entity
-@Proxy(lazy=false)
 @Table(name="teacher")
+@Proxy(lazy=false)
 public class Teacher implements Serializable {
 
     @Id
@@ -31,7 +36,8 @@ public class Teacher implements Serializable {
     @Column(name="id")
     private BigInteger id;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher")
+    @OneToMany( mappedBy = "teacher")
+    @LazyCollection(LazyCollectionOption.FALSE)
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<Test> tests = new ArrayList<Test>();
     
@@ -40,8 +46,14 @@ public class Teacher implements Serializable {
 
     public Teacher() { }
     
+    
     public Teacher(BigInteger id) {
         this.id = id;
+    }
+    
+    public Teacher(BigInteger id, List<Test> tests) {
+        this.id = id;
+        this.tests=tests;
     }
     
       
@@ -53,10 +65,12 @@ public class Teacher implements Serializable {
         return id;
     }
     
+    
      public void setTests(List<Test> tests) {
         this.tests = tests;
     }
 
+    
     public List<Test> getTests() {
         return tests;
     }

@@ -47,7 +47,8 @@ public class Question implements Serializable {
     @Column(name = "value")
     private Integer value;
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name="test_id", nullable = false, insertable = true, updatable = true)
     private Test test;
     

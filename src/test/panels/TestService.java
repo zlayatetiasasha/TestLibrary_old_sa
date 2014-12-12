@@ -8,6 +8,7 @@ import java.math.BigInteger;
 public interface TestService {
     boolean addTest(Test t);
     Test getTestById(BigInteger id);
+    Test getTestWithQuestions(Test test);
     
     boolean addAnswersStudent(AnswersStudent answ);
 }
