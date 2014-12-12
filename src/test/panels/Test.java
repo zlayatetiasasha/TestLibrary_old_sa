@@ -103,6 +103,7 @@ public class Test implements Serializable {
     public Test(BigInteger id, List<Question> questions, String title, String author, String theme, Integer passScore, String date,
                     String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.id = id;
+        this.author = author;
         this.questions = questions;
         this.title = title;
         this.theme = theme;
@@ -122,6 +123,7 @@ public class Test implements Serializable {
                     String instructions, Integer timeToPass, Integer poor, Integer unsat, Integer sat, Integer good, Integer exc, Integer access) {
         this.questions = questions;
         this.title = title;
+        this.author = author;
         this.theme = theme;
         this.passScore = passScore;
         this.date = date;
